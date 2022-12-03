@@ -70,11 +70,10 @@ export const updateSalaProductos = async (req, res) => {
 export const CambioEstadoSP = async (req, res) => {
     try {
       const { id } = req.params;
-      const { estado } = req.body;
-  
+     
       const [result] = await pool.query(
-        "UPDATE sala_roductos SET  estado = ? WHERE id_sala_producto = ?",
-        [estado, id]
+        "UPDATE sala_roductos SET  estado = 0 WHERE id = ?",
+        [id]
       );
   
       if (result.affectedRows === 0)
